@@ -8,8 +8,11 @@ int main (int argc, const char * argv[])
 	//take the time
 	int start = time(NULL);
 	
-	int min, max, inc;
-
+	int debug, min, max, inc;
+	
+	printf("\nEnable debug mode? ");
+	scanf("%d", &debug);
+	
 	printf("\nWhat value should we start at? ");
 	scanf("%d", &min);
 	
@@ -25,6 +28,10 @@ int main (int argc, const char * argv[])
 	
 	for (int total = min; total <= max; total += inc)
 	{
+		if (debug)
+		{
+			printf("%d\n", total);
+		}
 		matches += test(total);
 	}
 	
