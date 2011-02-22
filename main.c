@@ -13,10 +13,10 @@ int main (int argc, const char * argv[])
 	printf("\nWhat value should we start at? ");
 	scanf("%d", &min);
 	
-	printf("\nWhat value should we finish at? ");
+	printf("What value should we finish at? ");
 	scanf("%d", &max);
 	
-	printf("\nWhat value should we incriment by? ");
+	printf("What value should we increment by? ");
 	scanf("%d", &inc);
 	
 	printf("\nStarting now. Time at start: %d\n\n", start);
@@ -25,6 +25,7 @@ int main (int argc, const char * argv[])
 	
 	for (int total = min; total <= max; total += inc)
 	{
+		printf("%d\n", total);
 		matches += test(total);
 	}
 	
