@@ -8,11 +8,22 @@ int main (int argc, const char * argv[])
 	//take the time
 	int start = time(NULL);
 	
+	int min, max, inc;
+
+	printf("\nWhat value should we start at? ");
+	scanf("%d", &min);
+	
+	printf("\nWhat value should we finish at? ");
+	scanf("%d", &max);
+	
+	printf("\nWhat value should we incriment by? ");
+	scanf("%d", &inc);
+	
 	printf("\nStarting now. Time at start: %d\n\n", start);
 	
 	int matches = 0;
 	
-	for (int total = 1; total < 1000000; total++)
+	for (int total = min; total <= max; total += inc)
 	{
 		matches += test(total);
 	}
