@@ -1,45 +1,58 @@
 #include <stdio.h>
 #include <time.h>
 
-int substr_count(int num, int search);
+int test(int total);
 
 int main (int argc, const char * argv[])
 {
-	int search = 1;
-	int total = 500000000;
-	int count = 0;
-	
 	//take the time
 	int start = time(NULL);
 	
 	printf("\nStarting now. Time at start: %d\n\n", start);
 	
-	for (int i = 1; i <= total; i++)
+	int matches = 0;
+	
+	for (int total = 1; total < 1000000; total++)
 	{
-		count += substr_count(i, search);
+		matches += test(total);
 	}
 	
-	printf("The number %d appeared %d times\n", search, count);
-	
 	int end = time(NULL);
-	printf("Completed, took %i seconds\n\n", end - start);
+	printf("\nCompleted, took %i seconds. Found %d total matches\n\n", end - start, matches);
 	
 	return 0;
 }
 
-//yeeaah so im stealing the PHP name...
-int substr_count(int num, int search)
+int test(int total)
 {
-	int count = 0;
+	int count, matches = 0;
 
-	while (num > 0)
+	for (int search = 0; search < 10; search++)
 	{
-		int a = num % 10;
-		num /= 10;
-		if (a == search)
+		int substart = time(NULL);
+		
+		count = 0;
+		for (int i = 1; i <= total; i++)
 		{
-			count++;
+			int num = i;
+			while (num > 0)
+			{
+				int a = num % 10;
+				num /= 10;
+				if (a == search)
+				{
+					count++;
+				}
+			}
+		}
+		
+		if (count == total)
+		{
+			int end = time(NULL);
+			printf("MATCH: The number %d appears in %d that amount of times (%d seconds).\n", search, count, end - substart);
+			matches++;
 		}
 	}
-	return count;
+	
+	return matches;
 }
