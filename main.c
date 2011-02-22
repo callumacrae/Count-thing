@@ -25,7 +25,6 @@ int main (int argc, const char * argv[])
 	
 	for (int total = min; total <= max; total += inc)
 	{
-		printf("%d\n", total);
 		matches += test(total);
 	}
 	
